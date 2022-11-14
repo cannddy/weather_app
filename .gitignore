@@ -27,9 +27,9 @@ migrate_working_dir/
 **/android/
 **/ios/
 **/macos/
-**/linux/
 **/windows/
 **/web/
+**/linux/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
