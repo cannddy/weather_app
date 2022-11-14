@@ -5,14 +5,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:weather/widgets/day_weather_status_container.dart';
 
-class currentWeather extends StatefulWidget {
-  const currentWeather({super.key});
+class CurrentWeatherPage extends StatefulWidget {
+  const CurrentWeatherPage({super.key});
 
   @override
-  State<currentWeather> createState() => _currentWeatherState();
+  State<CurrentWeatherPage> createState() => _CurrentWeatherPageState();
 }
 
-class _currentWeatherState extends State<currentWeather> {
+class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
