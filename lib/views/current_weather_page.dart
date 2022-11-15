@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:weather/widgets/day_weather_status_container.dart';
@@ -18,6 +19,7 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
     return Scaffold(
       backgroundColor: Color(0xff547298),
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent ),
         backgroundColor: Color(0xff547298),
         elevation: 0,
         actions: [
