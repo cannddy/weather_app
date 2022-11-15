@@ -32,7 +32,6 @@ class _DeceiderViewState extends State<DeceiderView> {
   Future<bool> AccessPermission() async {
     bool _serviceEnabled;
     PermissionStatus _permissionGranted;
-
     _serviceEnabled = await location.serviceEnabled();
     print(_serviceEnabled);
     if (!_serviceEnabled) {
@@ -40,11 +39,15 @@ class _DeceiderViewState extends State<DeceiderView> {
     }
 
     _permissionGranted = await location.hasPermission();
-    print(_permissionGranted.name);
+    print(_permissionGranted);
     if (_permissionGranted == PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
     }
-    return _serviceEnabled;
+    if (_serviceEnabled && _permissionGranted == PermissionStatus.granted) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   @override

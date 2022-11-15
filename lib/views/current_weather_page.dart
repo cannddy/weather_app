@@ -19,128 +19,110 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
     return Scaffold(
       backgroundColor: Color(0xff547298),
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent ),
+        systemOverlayStyle:
+            const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         backgroundColor: Color(0xff547298),
         elevation: 0,
+        centerTitle: true,
+        title: Text("Weather man"),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
         actions: [
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-          ),
-          Spacer(),
-          Text(
-            'Weather man',
-            style: TextStyle(
-              color: Colors.white,
-              height: 2,
-              fontSize: 25,
-            ),
-          ),
-          Spacer(),
           IconButton(
             icon: Icon(Icons.add_circle_outline_rounded),
             onPressed: () {},
           )
         ],
+        // actions: [
+        //   IconButton(
+        //     icon: Icon(Icons.menu),
+        //     onPressed: () {},
+        //   ),
+        //   Spacer(),
+        //   Text(
+        //     'Weather man',
+        //     style: TextStyle(
+        //       color: Colors.white,
+        //       height: 2,
+        //       fontSize: 25,
+        //     ),
+        //   ),
+        //   Spacer(),
+        //   IconButton(
+        //     icon: Icon(Icons.add_circle_outline_rounded),
+        //     onPressed: () {},
+        //   )
+        // ],
       ),
       body: Column(
         children: [
           Container(
             //color: Colors.black,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Center(
-                  child: Text(
-                    'Chennai',
-                    
-                    style: TextStyle(
-                      
-                      color: Colors.white,
-                      height: 5,
-                      fontSize: 45,
-                    ),
-                  ),
-                  
-                ),Center(
-                   child: Text(
-                    'Sunday, December 19, 2022',
-                    
-                    style: TextStyle(
-                      color: Colors.white,
-                      height: 1,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w300,
-                      
-                    ),
+                Text(
+                  'Chennai',
+                  style: TextStyle(
+                    color: Colors.white,
+                    height: 5,
+                    fontSize: 45,
                   ),
                 ),
-                Center(
-                   child: Text(
-                    '15ᵒc',
-                    
-                    style: TextStyle(
+                Text(
+                  'Sunday, December 19, 2022',
+                  style: TextStyle(
+                    color: Colors.white,
+                    height: 1,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                Text(
+                  '15ᵒc',
+                  style: TextStyle(
                       color: Colors.white,
                       height: 1.5,
                       fontSize: 100,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
-                Center(
-                   child: Text(
-                    '-------------',
-                    
-                    style: TextStyle(
+                Text(
+                  '-------------',
+                  style: TextStyle(
                       color: Colors.white,
                       height: 1,
                       fontSize: 50,
-                      fontWeight: FontWeight.normal
-                    ),
-                  ),
+                      fontWeight: FontWeight.normal),
                 ),
-                Center(
-                   child: Text(
-                    'Cloudy',
-                    
-                    style: TextStyle(
+                Text(
+                  'Cloudy',
+                  style: TextStyle(
                       color: Colors.white,
                       height: 3.5,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
                 //hi
-                 Center(
-                   child: Text(
-                    '25ᵒc/25ᵒc',
-                    
-                    style: TextStyle(
+                Text(
+                  '25ᵒc/25ᵒc',
+                  style: TextStyle(
                       color: Colors.white,
                       height: 1.5,
                       fontSize: 22,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+                      fontWeight: FontWeight.bold),
                 ),
-                
-                
+                SizedBox(height: 110,)
               ],
             ),
-          ),SizedBox(
-            height: 210,
           ),
+          Spacer(),
           SizedBox(
             height: 100,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemBuilder:(context, index) {
-               
-                  return const 
-                   dayStatusContainer();
-                  ;
+              itemBuilder: (context, index) {
+                return const dayStatusContainer();
               },
-            )
+            ),
           )
         ],
       ),
