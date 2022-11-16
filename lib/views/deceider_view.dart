@@ -11,15 +11,13 @@ class DeceiderView extends StatefulWidget {
 }
 
 class _DeceiderViewState extends State<DeceiderView> {
-  
-
   Future<bool> accessPermission() async {
     Location location = Location();
     bool _serviceEnabled;
     PermissionStatus _permissionGranted;
     _serviceEnabled = await location.serviceEnabled();
     // debugPrint(_serviceEnabled);
-    
+
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
     }
@@ -29,9 +27,21 @@ class _DeceiderViewState extends State<DeceiderView> {
     if (_permissionGranted == PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
     }
+    if (_permissionGranted == PermissionStatus.deniedForever) {
+      await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Alert"),
+          content: Text("Allow Permission for location"),
+          actions: [
+            TextButton(onPressed: ()=>Navigator.pop(context), child: Text("Allow"))
+          ],
+        ),
+      );
+    }
     if (_serviceEnabled && _permissionGranted == PermissionStatus.granted) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
@@ -55,7 +65,7 @@ class _DeceiderViewState extends State<DeceiderView> {
             }
           }
           if (snapshot.hasError) {
-            return  AlertDialog(
+            return AlertDialog(
               title: const Text("Alert"),
               content: Text(snapshot.error.toString()),
             );

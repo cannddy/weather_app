@@ -9,7 +9,7 @@ class dayStatusContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
-      width: 60,
+      width: 100,
       child: Column(
         children: [
           Icon(Icons.cloudy_snowing,color: Color.fromRGBO(240, 225, 89, 1),),
@@ -22,6 +22,7 @@ class dayStatusContainer extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
           ),
+          SizedBox(height: 3,),
           Text(
             'Today',
             style: TextStyle(
