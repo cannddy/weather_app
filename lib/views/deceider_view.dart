@@ -34,7 +34,7 @@ class _DeceiderViewState extends State<DeceiderView> {
           title: Text("Alert"),
           content: Text("Allow Permission for location"),
           actions: [
-            TextButton(onPressed: ()=>Navigator.pop(context), child: Text("Allow"))
+            TextButton(onPressed: ()=>Navigator.pop(context), child: Text("candy"))
           ],
         ),
       );
