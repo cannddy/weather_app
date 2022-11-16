@@ -14,7 +14,7 @@ class dayStatusContainer extends StatelessWidget {
         children: [
           Icon(Icons.cloudy_snowing,color: Color.fromRGBO(240, 225, 89, 1),),
           Text(
-            '29ᵒc',
+            '29°c',
             style: TextStyle(
                 color: Colors.white,
                 height: 1.5,

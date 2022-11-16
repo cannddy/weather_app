@@ -109,7 +109,7 @@ class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                Text( "${weatherData.temperature_2mMax[0].toString()}ᵒc"
+                Text( "${weatherData.temperature_2mMax[0].toString()}°c"
                  ,
                   style: TextStyle(
                       color: Colors.white,
@@ -135,7 +135,7 @@ class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
                 ),
                 
                 SizedBox(
-                  height: (MediaQuery.of(context).size.height)*0.1,
+                  height: (MediaQuery.of(context).size.height)*0.025,
                 )
               ],
             ),
