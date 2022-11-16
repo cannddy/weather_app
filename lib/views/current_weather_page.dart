@@ -135,7 +135,7 @@ class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
                 ),
                 
                 SizedBox(
-                  height: (MediaQuery.of(context).size.height)/10*100,
+                  height: (MediaQuery.of(context).size.height)*0.1,
                 )
               ],
             ),
