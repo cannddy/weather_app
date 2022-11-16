@@ -17,20 +17,7 @@ class CurrentWeatherPage extends StatefulWidget {
 class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
   Future<LocationData?> getData() async {
     Location location = Location();
-    bool serviceEnabled;
-    PermissionStatus permissionGranted;
-    LocationData locationData;
-
-    serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-    }
-
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
-    }
-    locationData = await location.getLocation();
+    LocationData locationData = await location.getLocation();
     return locationData;
   }
 
