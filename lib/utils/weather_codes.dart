@@ -82,21 +82,10 @@ String convertWeatherCode(int weatherCode) {
       case 96:
       mode = "Thunderstorm(slight)";
       break;
-      case :
+      case 99:
       mode = "Thunderstorm(Heavy hail)";
       break;
-      case :
-      mode = "()";
-      break;
-      case :
-      mode = "()";
-      break;
-      case :
-      mode = "()";
-      break;
-      case :
-      mode = "()";
-      break;
+     
     default:
   }
   return mode;
