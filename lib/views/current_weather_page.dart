@@ -24,7 +24,7 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    FutureBuilder(future:getData(),
+    return FutureBuilder(future:getData(),
      builder:(context, snapshot) {
       if (snapshot.hasData) {
         LocationData data=snapshot.data!;
