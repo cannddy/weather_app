@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:location/location.dart';
 import 'package:weather/widgets/day_weather_status_container.dart';
 
 class CurrentWeatherPage extends StatefulWidget {
@@ -14,6 +15,25 @@ class CurrentWeatherPage extends StatefulWidget {
 }
 
 class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
+  Future<LocationData?> getData() async {
+    Location location = Location();
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    LocationData locationData;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+    }
+    locationData = await location.getLocation();
+    return locationData;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +130,9 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
                       fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 110,)
+                SizedBox(
+                  height: 110,
+                )
               ],
             ),
           ),
