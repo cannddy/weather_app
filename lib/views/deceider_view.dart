@@ -60,7 +60,7 @@ class _DeceiderViewState extends State<DeceiderView> {
               content: Text(snapshot.error.toString()),
             );
           }
-          return const Text("No data");
+          return const Center(child: CircularProgressIndicator());
         });
   }
 }

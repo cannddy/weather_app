@@ -23,28 +23,30 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
     Location location = Location();
     LocationData locationData = await location.getLocation();
     ApiHelper apiHelper = ApiHelper();
-    await apiHelper.getWeatherInfo(dt, dt.add(Duration(days: 20)));
+    await apiHelper.getWeatherInfo(locationData.latitude!,locationData.longitude!);
     return locationData;
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: getData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            LocationData data = snapshot.data!;
-
-            return Center(child: Text(data.latitude.toString()));
-          }
-          if (snapshot.hasError) {
-            return AlertDialog(
-              title: const Text("Some error"),
-              content: Text(snapshot.error.toString()),
-            );
-          }
-          return const Text("No data");
-        });
+    return Scaffold(
+      body: FutureBuilder(
+          future: getData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              LocationData data = snapshot.data!;
+    
+              return Center(child: Text(data.latitude.toString()));
+            }
+            if (snapshot.hasError) {
+              return AlertDialog(
+                title: const Text("Some error"),
+                content: Text(snapshot.error.toString()),
+              );
+            }
+            return const Center(child: Text("Getting your weather info"));
+          }),
+    );
     // return Scaffold(
     //   backgroundColor: Color(0xff547298),
     //   appBar: AppBar(
