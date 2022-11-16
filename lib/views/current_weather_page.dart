@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:location/location.dart';
 import 'package:weather/api/api_helper.dart';
 import 'package:weather/api/weather_data.dart';
+import 'package:weather/utils/weather_codes.dart';
 import 'package:weather/views/no_permission_page.dart';
 import 'package:weather/widgets/day_weather_status_container.dart';
 
@@ -125,22 +126,14 @@ class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
                       fontWeight: FontWeight.normal),
                 ),
                 Text(
-                  'Cloudy',
+                convertWeatherCode(weatherData.weathercode[0]),
                   style: TextStyle(
                       color: Colors.white,
                       height: 3.5,
                       fontSize: 20,
                       fontWeight: FontWeight.bold),
                 ),
-                //hi
-                Text(
-                  '25ᵒc/25ᵒc',
-                  style: TextStyle(
-                      color: Colors.white,
-                      height: 1.5,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
+                
                 SizedBox(
                   height: 110,
                 )
