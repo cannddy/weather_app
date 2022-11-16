@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:location/location.dart';
+import 'package:weather/api/api_helper.dart';
 import 'package:weather/views/no_permission_page.dart';
 import 'package:weather/widgets/day_weather_status_container.dart';
 
@@ -21,8 +22,8 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
   Future<LocationData?> getData() async {
     Location location = Location();
     LocationData locationData = await location.getLocation();
-    var formattedDate = "${dt.year}-${dt.month}-${dt.day}";
-    print(formattedDate);
+    ApiHelper apiHelper = ApiHelper();
+    await apiHelper.getWeatherInfo(dt, dt.add(Duration(days: 20)));
     return locationData;
   }
 
