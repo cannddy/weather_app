@@ -66,6 +66,7 @@ class CurrentWeatherDashboard extends StatefulWidget {
 class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
   @override
   Widget build(BuildContext context) {
+    final weatherData= widget.weatherData;
         return Scaffold(
       backgroundColor: Color(0xff547298),
       appBar: AppBar(
@@ -107,8 +108,8 @@ class _CurrentWeatherDashboardState extends State<CurrentWeatherDashboard> {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-                Text(
-                  '15ᵒc',
+                Text( "${weatherData.temperature_2mMax[0].toString()}ᵒc"
+                 ,
                   style: TextStyle(
                       color: Colors.white,
                       height: 1.5,
