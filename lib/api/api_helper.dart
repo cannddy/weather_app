@@ -8,7 +8,7 @@ import 'package:weather/api/weather_data.dart';
 class ApiHelper {
   //Future<Map<String,dynamic>> 
   Future<WeatherData> getWeatherInfo(double latitude,double longitude)async{
-    String URL = "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&timezone=GMT&daily=weathercode";
+    String URL = "https://api.open-meteo.com/v1/forecast?latitude=$latitude&longitude=$longitude&timezone=GMT&daily=weathercode,temperature_2m_max";
     Uri REQ_URL = Uri.parse(URL);
     final result = await http.get(REQ_URL);
     final jsonData = json.decode(result.body)["daily"];
