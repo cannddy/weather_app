@@ -37,7 +37,7 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
             if (snapshot.hasData) {
               WeatherData data = snapshot.data!;
     
-              return CurrentWeatherDashboard();
+              return CurrentWeatherDashboard(weatherData: data,);
             }
             if (snapshot.hasError) {
               return AlertDialog(
@@ -56,7 +56,8 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
 
 
 class CurrentWeatherDashboard extends StatefulWidget {
-  const CurrentWeatherDashboard({super.key});
+  final WeatherData weatherData;
+  const CurrentWeatherDashboard({super.key, required this.weatherData});
 
   @override
   State<CurrentWeatherDashboard> createState() => _CurrentWeatherDashboardState();
