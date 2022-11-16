@@ -8,8 +8,8 @@ class ApiHelper {
   getWeatherInfo(DateTime date,DateTime endDate)async{
     var formattedDate = "${date.year}-${date.month}-${date.day}";
     var formattedEndDate = "${endDate.year}-${endDate.month}-${endDate.day}";
-    Uri REQ_URL = Uri.parse("$URL&start_date=$date&end_date=$formattedEndDate");
+    Uri REQ_URL = Uri.parse("$URL&start_date=$formattedDate&end_date=$formattedEndDate");
     final result = await http.get(REQ_URL);
-    print(result);
+    print(result.body);
   }
 }
