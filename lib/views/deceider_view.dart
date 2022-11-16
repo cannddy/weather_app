@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:weather/views/current_weather_page.dart';
+import 'package:weather/views/no_permission_page.dart';
 
 class DeceiderView extends StatefulWidget {
   const DeceiderView({super.key});
@@ -29,17 +30,18 @@ class _DeceiderViewState extends State<DeceiderView> {
     return _locationData;
   }
 
-  Future<bool> AccessPermission() async {
+  Future<bool> accessPermission() async {
     bool _serviceEnabled;
     PermissionStatus _permissionGranted;
     _serviceEnabled = await location.serviceEnabled();
-    print(_serviceEnabled);
+    // debugPrint(_serviceEnabled);
+    
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
     }
 
     _permissionGranted = await location.hasPermission();
-    print(_permissionGranted);
+    // print(_permissionGranted);
     if (_permissionGranted == PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
     }
@@ -53,23 +55,26 @@ class _DeceiderViewState extends State<DeceiderView> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: AccessPermission(),
+        future: accessPermission(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: const CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
             // return Center(child: Text(snapshot.data.toString()));
-            bool _data = snapshot.data!;
-            print(_data);
-            if (_data) {
-              return CurrentWeatherPage();
+            bool data = snapshot.data!;
+            //print(data);
+            if (data) {
+              return const CurrentWeatherPage();
             } else {
-              return Scaffold();
+              return const NoPermissionPage();
             }
           }
           if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+            return  AlertDialog(
+              title: const Text("Alert"),
+              content: Text(snapshot.error.toString()),
+            );
           }
           return const Text("No data");
         });
