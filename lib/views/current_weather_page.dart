@@ -16,28 +16,34 @@ class CurrentWeatherPage extends StatefulWidget {
 }
 
 class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
+  var dt = DateTime.now();
+
   Future<LocationData?> getData() async {
     Location location = Location();
     LocationData locationData = await location.getLocation();
+    var formattedDate = "${dt.year}-${dt.month}-${dt.day}";
+    print(formattedDate);
     return locationData;
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future:getData(),
-     builder:(context, snapshot) {
-      if (snapshot.hasData) {
-        LocationData data=snapshot.data!;
-        return Text("data here");
-        
-      }if (snapshot.hasError) {
-            return  AlertDialog(
+    return FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            LocationData data = snapshot.data!;
+
+            return Center(child: Text(data.latitude.toString()));
+          }
+          if (snapshot.hasError) {
+            return AlertDialog(
               title: const Text("Some error"),
               content: Text(snapshot.error.toString()),
             );
           }
           return const Text("No data");
-     } );
+        });
     // return Scaffold(
     //   backgroundColor: Color(0xff547298),
     //   appBar: AppBar(
