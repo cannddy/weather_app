@@ -56,7 +56,9 @@ class _CurrentWeatherPageState extends State<CurrentWeatherPage> {
 
 
 class CurrentWeatherDashboard extends StatefulWidget {
-  const CurrentWeatherDashboard({super.key});
+  
+  final LocationData WeatherData;
+  const CurrentWeatherDashboard({super.key, required this.WeatherData});
 
   @override
   State<CurrentWeatherDashboard> createState() => _CurrentWeatherDashboardState();
